@@ -13,9 +13,10 @@
 	$salt = sprintf("$2a$%02d$", $cost) . $salt; // $2a$ means that we are using blowfish algorithm
 	$hash = crypt($Pass, $salt);
 
-	$stmt =$db->prepare('INSERT INTO Users(username,password,nome,email,birth_date) VALUES(:user,:pass,:name,:email,:data)');
+	$stmt =$db->prepare('INSERT INTO Users(username,password,salt,nome,email,birth_date) VALUES(:user,:pass,:salt,:name,:email,:data)');
 	$stmt->bindParam(':user',$User); //mais seguro com bindparam supostamente
 	$stmt->bindParam(':pass',$hash);
+	$stmt->bindParam(':salt',$salt);
 	$stmt->bindParam(':name',$Name);
 	$stmt->bindParam(':email',$Email);
 	$stmt->bindParam(':data',$Date);

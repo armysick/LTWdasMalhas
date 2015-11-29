@@ -80,12 +80,12 @@
 						<div class="popupBoxContent">
 							<h2>Sign In</h2>
                             <content>
-                			<form action="SignIn.php" class="contact">
+                			<form action="SignIn.php" class="contact" method="post">
                                	<fieldset>
-                                    <input placeholder="Username" type="username" id="form_contact" tabindex="1">
+                                    <input placeholder="Username" type="username" id="form_contact" name="user" tabindex="1">
                                 </fieldset>
                                 <fieldset>
-                                    <input placeholder="Password" type="password" id="form_contact" tabindex="2">
+                                    <input placeholder="Password" type="password" id="form_contact" name="pass" tabindex="2">
                                 </fieldset>
                                 <fieldset>
                                     <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
