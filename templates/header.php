@@ -32,9 +32,9 @@
             <input type="checkbox" id="show-menu" name="button" />
             
         	<ul class="menu">
-            	<li><a id="home" href="#homeSection" class="active">Home</a></li>
-                <li><a id="about" href="#aboutSection">About</a></li>
-                <li><a id="contact" href="#contactSection">Contact Us</a></li>
+            	<li><a id="home" href="index.php#homeSection" class="active">Home</a></li>
+                <li><a id="about" href="index.php#aboutSection">About</a></li>
+                <li><a id="contact" href="index.php#contactSection">Contact Us</a></li>
                 <li><a id="events" href="list_public_events.php">Events</a></li>
                 <li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Sign Up</a></li>
                 <li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Sign In</a></li>
@@ -43,7 +43,7 @@
 						<div class="popupBoxContent">
 							<h2>Sign Up</h2>
 							<content>
-                			<form action="../database/SignUp.php" class="contact" method="post">
+                			<form action="SignUp.php" class="contact" method="post">
                                 <!--alteração pra enviar pra BDAD-->
                                 <fieldset>
                                     <input type="text" name="name" placeholder="Your Name…" id="form_contact" tabindex="1" required >
@@ -80,7 +80,7 @@
 						<div class="popupBoxContent">
 							<h2>Sign In</h2>
                             <content>
-                			<form action="" class="contact">
+                			<form action="SignIn.php" class="contact">
                                	<fieldset>
                                     <input placeholder="Username" type="username" id="form_contact" tabindex="1">
                                 </fieldset>
