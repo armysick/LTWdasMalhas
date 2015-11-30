@@ -38,6 +38,7 @@
                 <li><a id="events" href="list_public_events.php">Events</a></li>
                 <li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Sign Up</a></li>
                 <li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Sign In</a></li>
+                           
                	<div id="popupBoxOnePosition">
 					<div class="popupBoxWrapper">
 						<div class="popupBoxContent">

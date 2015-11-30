@@ -30,7 +30,7 @@
 				echo'<script language="javascript">';
 				echo 'alert("Correct username and/or password.")';
 				echo '</script>';
-				$redirectUrl = 'index.php';
+				$redirectUrl = 'profile.php';
 				echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
 				//header("location: index.php"); // Redirecting To Other Page
 			} else {
