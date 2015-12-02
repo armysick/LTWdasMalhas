@@ -84,8 +84,8 @@
 									</div>
 								
 							
-							<li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Edit your profile</a></li><!--script to edit personal information-->
-								<div id="popupBoxOnePosition">
+							<li class="edit"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Edit your profile</a></li><!--script to edit personal information-->
+								<div id="popupBoxTwoPosition">
 									<div class="popupBoxWrapper">
 										<div class="popupBoxContent">
 											<h2>Edit Your Profile</h2>
@@ -93,10 +93,10 @@
 											<form action="edit_profile.php" class="contact" method="post">
 												<!--alteração pra enviar pra BDAD-->
 												<fieldset>
-													<input type="text" name="name" placeholder="Your Name…" id="form_contact" tabindex="1" required >
+													<input type="text" name="name" placeholder="Your Name…" id="form_contact" tabindex="1">
 												</fieldset>
 												<fieldset>
-													<input placeholder="Your Email Address" type="email" name="email" id="form_contact" tabindex="2" required>
+													<input placeholder="Your Email Address" type="email" name="email" id="form_contact" tabindex="2">
 												</fieldset>
 												<fieldset>
 													<input name ="username" placeholder="Choose a username" type="user" id="form_contact" tabindex="3">
