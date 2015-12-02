@@ -16,7 +16,7 @@
 			
 			$username=$_POST['user'];
 			$password=$_POST['pass'];
-			$stmt =$db->prepare('SELECT password,salt FROM Users WHERE username = :user LIMIT 1');
+			$stmt =$db->prepare('SELECT idUser, password,salt FROM Users WHERE username = :user LIMIT 1');
 			$stmt->bindParam(':user', $username);
 			$stmt->execute();
 			$chiclas = $stmt->fetch();
@@ -25,7 +25,7 @@
 			
 			// Hashing the password with its hash as the salt returns the same hash
 			if($pwdhash == $chiclas['password']){
-	
+				$_SESSION['id_user'] = $chiclas['idUser'];
 				$_SESSION['login_user'] = $username;            	// store the username
 				echo'<script language="javascript">';
 				echo 'alert("Correct username and/or password.")';
