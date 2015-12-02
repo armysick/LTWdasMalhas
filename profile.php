@@ -6,7 +6,7 @@
     	<div class="content">
         	<article class="topcontent" id="homeSection">
             	<header>
-                	<h2><a href="#" title="Title">Profile</a></h2>
+                	<h2><a href="profile.php" title="Title">Profile</a></h2>
                 </header>
                 
                 <content>
