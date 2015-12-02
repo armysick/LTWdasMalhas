@@ -42,7 +42,51 @@
 						<h2>A Heading Level 2</h2>
 						<p>This paragraph is followed by a sample unordered list:</p>
 						<ul>
-							<li><a href="#">Create new event</a></li> <!--script to create new events-->
+							<!-- Create new event -->
+							<nav> 
+							<!-- CSS will hide this checkbox until the media query is activated-->
+								<label for="show-menu" class="show-menu">Menu</label>
+								<input type="checkbox" id="show-menu" name="button" />
+								
+								<ul class="menu">
+									<li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Create New Event</a></li>
+											   
+									<div id="popupBoxOnePosition">
+										<div class="popupBoxWrapper">
+											<div class="popupBoxContent">
+												<h2>Create New Event</h2>
+												<content>
+												<form action="create_event.php" class="contact" method="post">
+													<!--alteração pra enviar pra BDAD-->
+													<fieldset>
+														<input type="text" name="description" placeholder="Event Description…" id="form_contact" tabindex="1" required >
+													</fieldset>
+													<fieldset>
+														<input placeholder="Event Type…" type="text" name="e_type" id="form_contact" tabindex="2" required>
+													</fieldset>
+													<fieldset>
+														<input name ="image_link" placeholder="Choose Image Link…" type="text" id="form_contact" tabindex="3">
+													</fieldset>
+													<fieldset>
+														<input name="e_date" placeholder="Event's Date" type="date" id="form_contact" tabindex="4">
+													</fieldset>													
+													<fieldset>
+														<input name="public" placeholder="Public? (1) Private?(0)" type="number" id="form_contact" tabindex="5">	
+													</fieldset>
+													
+													<fieldset>
+														<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+													</fieldset>
+													<fieldset>
+														<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Cancel</a></button>
+													</fieldset>   
+												</form>
+												</content>
+												</div>
+										</div>
+									</div>
+								</ul>
+							</nav>
 							<li><a href="#">Edit your profile</a></li><!--script to edit personal information-->
 							<li><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
 						</ul>
