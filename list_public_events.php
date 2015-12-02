@@ -31,6 +31,7 @@
                             echo '<tr>';
                             echo '<td>' . $row['idEvent'] . '</td>';
                             $id=(int)$row['idUser'];
+                            echo 'esta aqui'.$id;
                             $db1=new PDO('sqlite:DB.db');
                             $stmt1 =$db1->prepare('SELECT nome FROM Users WHERE idUser LIKE "%'.$id.'%" LIMIT 1');
                             $stmt1->execute();

@@ -37,13 +37,10 @@
                             	echo '</tr>';
                             }
 						?>
-						<p><strong>Glazed</strong> is a free, fully standards-compliant CSS template designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attributions 2.5</a> license, so you're pretty much free to do whatever you want with it  (even use it commercially) provided you keep the links in the footer  intact. Have fun with it :)</p>
-						<p>This template is also available as a <a href="http://www.freewpthemes.net/preview/glazed/">WordPress theme</a> at <a href="http://www.freewpthemes.net/">Free WordPress Themes</a>.</p>
-						<h2>A Heading Level 2</h2>
-						<p>This paragraph is followed by a sample unordered list:</p>
+						
 						<ul>
 							<!-- Create new event -->
-							<nav> 
+							
 							<!-- CSS will hide this checkbox until the media query is activated-->
 								<label for="show-menu" class="show-menu">Menu</label>
 								<input type="checkbox" id="show-menu" name="button" />
@@ -98,14 +95,19 @@
     </div>
     <aside class="top-sidebar">
     	<article>
-        	<h2>Recent Events</h2>
+        	<h2>Recently Created Events</h2>
 				<ul>
-					<li><a href="#">Aliquam libero</a></li>
-					<li><a href="#">Consectetuer adipiscing elit</a></li>
-					<li><a href="#">Metus aliquam pellentesque</a></li>
-					<li><a href="#">Suspendisse iaculis mauris</a></li>
-					<li><a href="#">Urnanet non molestie semper</a></li>
-					<li><a href="#">Proin gravida orci porttitor</a></li>
+					<?php
+						$user_id = $_SESSION['id_user'];
+						$stmt =$db->prepare('SELECT * FROM Events WHERE idUser=:user');
+						$stmt->bindParam(':user', $user_id);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+                        foreach( $result as $row) {
+                        	$link = 'event_page.php?id='.$row['idEvent'];
+                            echo '<li>' . '<a href="'.$link.'">'.$row['description'] . '</a>'.'</li>';
+                        }
+                        ?>
 				</ul>
         </article>        
     </aside>
