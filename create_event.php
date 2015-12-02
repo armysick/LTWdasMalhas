@@ -6,7 +6,7 @@
 	
 	// description  // event type // image_link // event_date // public
 	// echo 'oi'.$_SESSION['login_user'].'poh';
-	$User = $_SESSION['login_user'];
+	$User_id = $_SESSION['id_user'];
 	$Description = $_POST['description'];
 	$E_type= $_POST['e_type'];
 	$Image_link = $_POST['image_link'];
@@ -17,8 +17,7 @@
 	else
 		$Public = false;
 
-	$User_id = 1;
-	echo $User.$Description.$E_type.$Image_link.$E_date.$Public;
+	echo $User_id.$Description.$E_type.$Image_link.$E_date.$Public;
 
 	$stmt =$db->prepare('INSERT INTO Events(idUser,description,event_type,image_link,event_date,public) VALUES(:userID,:description,:event_type,:image_link,:event_date,:public)');
 	$stmt->bindParam(':userID',$User_id); //mais seguro com bindparam supostamente
