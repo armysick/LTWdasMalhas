@@ -29,11 +29,11 @@
 							$result = $stmt->fetchAll();
 							foreach($result as $row){
 								echo '<tr>';
-                            	echo '<td>'.$row['nome'].'</td>';
+                            	echo '<td>'.'Nome: '.$row['nome'].'</td>';
                             	echo'<br>';
-                            	echo '<td>'.$row['email'].'</td>';
+                            	echo '<td>'.'E-mail: '.$row['email'].'</td>';
                             	echo'<br>';
-                            	echo '<td>'.$row['birth_date'].'</td>';
+                            	echo '<td>'.'Date of birth '.$row['birth_date'].'</td>';
                             	echo '</tr>';
                             }
 						?>
@@ -85,10 +85,11 @@
 												</div>
 										</div>
 									</div>
-								</ul>
-							</nav>
-							<li><a href="#">Edit your profile</a></li><!--script to edit personal information-->
-							<li><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+								
+							
+							<li class="signin"><a href="#">Edit your profile</a></li><!--script to edit personal information-->
+							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+						</ul>
 						</ul>
 						
 						
