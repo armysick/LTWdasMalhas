@@ -84,7 +84,43 @@
 									</div>
 								
 							
-							<li class="signin"><a href="#">Edit your profile</a></li><!--script to edit personal information-->
+							<li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Edit your profile</a></li><!--script to edit personal information-->
+								<div id="popupBoxOnePosition">
+									<div class="popupBoxWrapper">
+										<div class="popupBoxContent">
+											<h2>Edit Your Profile</h2>
+											<content>
+											<form action="edit_profile.php" class="contact" method="post">
+												<!--alteração pra enviar pra BDAD-->
+												<fieldset>
+													<input type="text" name="name" placeholder="Your Name…" id="form_contact" tabindex="1" required >
+												</fieldset>
+												<fieldset>
+													<input placeholder="Your Email Address" type="email" name="email" id="form_contact" tabindex="2" required>
+												</fieldset>
+												<fieldset>
+													<input name ="username" placeholder="Choose a username" type="user" id="form_contact" tabindex="3">
+												</fieldset>
+												<fieldset>
+													<input name="password" placeholder="Choose a new password" type="password" id="form_contact" tabindex="4">
+												</fieldset>
+												<fieldset>
+													<input name="password2" placeholder="Confirm new password" type="password" id="form_contact" tabindex="5">
+												</fieldset>
+												<fieldset>
+													<input name="date_of_birth" placeholder="Date of birth" type="date" id="form_contact" tabindex="6">
+												</fieldset>
+												<fieldset>
+													<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+												</fieldset>
+												<fieldset>
+													<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Cancel</a></button>
+												</fieldset>   
+											</form>
+											</content>
+											</div>
+									</div>
+								</div>
 							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
 						</ul>
 						</ul>
