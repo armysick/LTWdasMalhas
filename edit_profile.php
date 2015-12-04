@@ -27,7 +27,7 @@
 		$salt = sprintf("$2a$%02d$", $cost) . $salt; // $2a$ means that we are using blowfish algorithm
 		$hash = crypt($Pass, $salt);
 	}
-	echo $_POST['name'];
+	echo $_POST['date_of_birth'];
 	if("" == trim($_POST['name']))
 		$Name = $prevnome;
 	else
@@ -39,14 +39,10 @@
 		$Email = $_POST['email'];
 	
 	
-	/*
-	$pattern = "^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$";
-	$Date = $_POST['date_of_birth'];
-	if(preg_match($pattern, $date))
+	if("" == trim($_POST['date_of_birth']))
 		$Date = $result1['birth_date'];
-	*/
-	
-	$Date = $_POST['date_of_birth'];
+	else
+		$Date = $_POST['date_of_birth'];
 
 	$stmt =$db->prepare('UPDATE Users SET password = :pass, salt = :salt, nome = :name, email = :email, birth_date = :data WHERE idUser = :idUser');
 	$stmt->bindParam(':idUser', $_SESSION['id_user']); //mais seguro com bindparam supostamente
