@@ -12,8 +12,9 @@
 	$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
 	$salt = sprintf("$2a$%02d$", $cost) . $salt; // $2a$ means that we are using blowfish algorithm
 	$hash = crypt($Pass, $salt);
+	$bool = 0;
 
-	$stmt =$db->prepare('INSERT INTO Users(username,password,salt,nome,email,birth_date,image) VALUES(:user,:pass,:salt,:name,:email,:data,:imagecoisa)');
+	$stmt =$db->prepare('INSERT INTO Users(username,password,salt,nome,email,birth_date,image,admin) VALUES(:user,:pass,:salt,:name,:email,:data,:imagecoisa,:admin)');
 	$stmt->bindParam(':user',$User); //mais seguro com bindparam supostamente
 	$stmt->bindParam(':pass',$hash);
 	$stmt->bindParam(':salt',$salt);
@@ -21,6 +22,7 @@
 	$stmt->bindParam(':email',$Email);
 	$stmt->bindParam(':data',$Date);
 	$stmt->bindParam(':imagecoisa',$Image);
+	$stmt->bindParam(':admin',$bool);
 	$stmt->execute();
 	//readfile("index.php");
 	$redirectUrl = 'index.php';

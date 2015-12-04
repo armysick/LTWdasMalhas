@@ -7,9 +7,10 @@ CREATE TABLE IF NOT EXISTS Users (
 	email VARCHAR(30),
 	birth_date DATE,
 	image VARCHAR(50),
+	admin BOOLEAN,
 	CONSTRAINT pk_users PRIMARY KEY (idUser),
 	CONSTRAINT u_user UNIQUE (username));
-
+ 
 
 CREATE TABLE IF NOT EXISTS Events (
 	idEvent INTEGER NOT NULL ,
