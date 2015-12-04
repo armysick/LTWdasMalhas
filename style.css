@@ -161,7 +161,27 @@ fieldset{
 	-webkit-border-radius: 5px; /*for browsers based on webkit*/
 	resize: none;
 }
+#password{
+	width:100%;
+	border:1px solid #CCC;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px; /*for Mozilla*/
+	-webkit-border-radius: 5px; /*for browsers based on webkit*/
+	resize: none;
+}
 
+#confirm{
+	width:100%;
+	border:1px solid #CCC;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px; /*for Mozilla*/
+	-webkit-border-radius: 5px; /*for browsers based on webkit*/
+	resize: none;
+}
 #contact-submit:hover{
 	background-color: #D9853B;
 	color: #FFF;

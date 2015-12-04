@@ -19,6 +19,20 @@
 			else
 				e.style.display = 'block';
 		}
+
+    function checkPasswordMatch() {
+    var password = $("#password").val();
+    var confirmPassword = $("#confirm").val();
+
+    if (password != confirmPassword)
+        $("#divCheckPasswordMatch").html("Passwords don't match!");
+    else
+        $("#divCheckPasswordMatch").html("Passwords match.");
+}
+
+$(document).ready(function () {
+   $("#confirm").keyup(checkPasswordMatch);
+});
 	</script>
 </head>
 
@@ -56,10 +70,13 @@
                                     <input name ="username" placeholder="Choose a username" type="user" id="form_contact" tabindex="3">
                                 </fieldset>
                                 <fieldset>
-                                    <input name="password" placeholder="Choose a password" type="password" id="form_contact" tabindex="4">
+                                    <input name="password" placeholder="Choose a password" type="password" id="password" tabindex="4">
                                 </fieldset>
                                 <fieldset>
-                                    <input name="password2" placeholder="Confirm password" type="password" id="form_contact" tabindex="5">
+                                    <input name="password2" placeholder="Confirm password" type="password" id="confirm" tabindex="5">
+                                </fieldset>
+                                <fieldset>
+                                    <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
                                 </fieldset>
                                 <fieldset>
                                     <input name="date_of_birth" placeholder="Date of birth" type="date" id="form_contact" tabindex="6">
