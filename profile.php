@@ -159,7 +159,7 @@
 					<?php
 						$user_id = $_SESSION['id_user'];
 						
-						$stmt =$db->prepare('SELECT * FROM Events WHERE idUser=:user LIMIT 3');
+						$stmt =$db->prepare('SELECT * FROM Events WHERE idUser=:user');
 						$stmt->bindParam(':user', $user_id);
                         $stmt->execute();
                         $result = $stmt->fetchAll();
