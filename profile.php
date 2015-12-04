@@ -179,7 +179,7 @@
 					<?php
 						$user_id = $_SESSION['id_user'];
 						//echo $user_id;
-						$stmt =$db->prepare('SELECT * FROM Comments WHERE idUser=:user ORDER BY idComment DESC LIMIT 3');
+						$stmt =$db->prepare('SELECT * FROM comments WHERE idUser=:user ORDER BY idComment DESC LIMIT 3');
 						$stmt->bindParam(':user', $user_id);
 						$stmt->execute();
                         $result = $stmt->fetchAll();

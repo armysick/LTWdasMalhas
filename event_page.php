@@ -13,9 +13,7 @@
             	<header>
                 	<h2><a href="#" title="Title">Event Page</a></h2>
                 </header>
-                
-
-
+              
                 <content>
                 	<div class="bigpix">
                 	<?php
@@ -57,12 +55,63 @@
 							<input type="hidden" name="id" value="<?php echo $_GET['id'] ?> ">
 							<input type="submit" value = "Register in This Event">
 							</form></a></li>
-							<li class="signin"><a href="comment_event.php">Comment event</a></li><!--script to edit personal information-->
+							<!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
 							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
 							<li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
 						</ul>
 						</ul>
 						
+                            
+                        </article>
+                      
+                        <article class="" id="contactSection">
+                            <header>
+                                <h2>Leave a comment...</h2>
+                            </header>
+                           
+                                <form action="" method="POST" class="contact">
+                                    <fieldset>
+                                        <input type="text" name="name" placeholder="Your Name…" id="form_contact" tabindex="1" required >
+                                    </fieldset>
+                                    <fieldset>
+                                        <input name="email" placeholder="Your Email Address" type="email" id="form_contact" tabindex="2" required>
+                                    </fieldset>
+                                    <fieldset>
+                                        <input name="comment" placeholder="Your comment" type="textarea" id="form_contact" tabindex="3" required>
+                                    </fieldset>
+                                    <fieldset>
+                                        <button name="submit" type="submit" value="submit" id="contact-submit">Submit</button>
+                                    </fieldset>  
+                                </form>
+                         </article>
+                            <?php
+                                session_start();
+                                $id_users = $_SESSION['id_user']; 
+                                $name = $_POST['name'];
+                               $email = $_POST['email'];
+                                $comments = $_POST['comment'];
+                                $from = 'From: Manage My Event';
+                                
+                                $subject = 'Comment succesfully added to event';
+                                $body = "$name, \n You added the comment:\n $comment";
+                                
+                                //mail(($email, $subject, $body, $from));
+                                
+                                $stmt3 =$db->prepare('INSERT INTO comments(idUser,idEvent,commentary) VALUES(:id_users,:events_id_page,:comments)');
+                                $stmt3->bindParam(':id_users', $id_users);
+                                $stmt3->bindParam(':events_id_page', $event_id_page);
+                                $stmt3->bindParam(':comments', $comments);
+                                $stmt3->execute();
+                                if($_POST['submit']){
+                                echo'<script language="javascript">';
+                                echo 'alert("Comment added to event")';
+                                echo '</script>';
+                                $redirectUrl = '#';
+                                echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';}
+                          
+                            ?>
+                            
+                  
 						
                 </content>
         </div>
