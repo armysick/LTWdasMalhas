@@ -1,6 +1,11 @@
 <?php
-	include_once("database/connection.php");
-	include_once("templates/header_profile.php");
+    include_once("database/connection.php");
+    session_start();
+    if(isset($_SESSION['id_user'])){
+        include_once("templates/header_profile.php");
+    } else{
+        include_once("templates/header.php");
+    }
 ?>
 <div class="mainContent">
     	<div class="content">

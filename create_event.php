@@ -1,6 +1,12 @@
 <?php
-	include_once("database/connection.php");
-	include_once("templates/header_profile.php");
+    include_once("database/connection.php");
+    session_start();
+    if(isset($_SESSION['id_user'])){
+        include_once("templates/header_profile.php");
+    } else{
+        
+        header('Location: index.php');
+    }
 	
 	session_start();
 	

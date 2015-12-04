@@ -1,6 +1,11 @@
 <?php
     include_once("database/connection.php");
-    include_once("templates/header.php");
+    session_start();
+    if(isset($_SESSION['id_user'])){
+        include_once("templates/header_profile.php");
+    } else{
+        include_once("templates/header.php");
+    }
 ?>
 	<!-- these HTML5 tags make the browser react and make the page responsive -->
 	<div class="mainContent">
