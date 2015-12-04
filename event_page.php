@@ -48,7 +48,10 @@
 						?>
 						
 						<ul class="menu">
-							<li class="signin"><a href="register_event.php">Register in this event</a></li>
+							<li class="signin" id="signin"><!--<a href="register_event.php">Register in this event--><form method="get" action="register_event.php">
+							<input type="hidden" name="id" value="<?php echo $_GET['id'] ?> ">
+							<input type="submit" value = "Register in This Event">
+							</form></a></li>
 							<li class="signin"><a href="comment_event.php">Comment event</a></li><!--script to edit personal information-->
 							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
 						</ul>
