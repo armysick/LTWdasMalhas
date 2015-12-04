@@ -172,11 +172,10 @@
 				<ul>
 					<?php
 						$user_id = $_SESSION['id_user'];
-						//echo $user_id;
-						$stmt =$db->prepare('SELECT * FROM Comments WHERE idUser=:user LIMIT 3');
+						$stmt =$db->prepare('SELECT * FROM Comments WHERE idUser=:user LIMIT 3' );
 						$stmt->bindParam(':user', $user_id);
 						$stmt->execute();
-                        $result = $stmt->fetchAll();
+                        $result = $stmt->fetch();
                         foreach( $result as $row) {
                         	$link = 'event_page.php?id='.$row['idEvent'];
                         	$stmt1=$db->prepare('SELECT description FROM Events WHERE idEvent=:events LIMIT 1' );

@@ -16,9 +16,9 @@
                 	<?php
                 		session_start();
 						$username = $_SESSION['login_user']; 
-						//echo'<h3>';
-						//echo '<a href="#">'.$username.'</a>';
-						//echo'</h3>';
+						echo'<h3>';
+						echo '<a href="#">'.$username.'</a>';
+						echo'</h3>';
 						$event_id_page = $_GET["id"];
 						$stmt =$db->prepare('SELECT image_link FROM Events WHERE idEvent =:id');
 						$stmt->bindParam(':id', $event_id_page);
@@ -54,6 +54,7 @@
 							</form></a></li>
 							<li class="signin"><a href="comment_event.php">Comment event</a></li><!--script to edit personal information-->
 							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+							<li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
 						</ul>
 						</ul>
 						
