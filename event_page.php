@@ -16,9 +16,9 @@
                 	<?php
                 		session_start();
 						$username = $_SESSION['login_user']; 
-						echo'<h3>';
-						echo '<a href="#">'.$username.'</a>';
-						echo'</h3>';
+						//echo'<h3>';
+						//echo '<a href="#">'.$username.'</a>';
+						//echo'</h3>';
 						$event_id_page = $_GET["id"];
 						$stmt =$db->prepare('SELECT image_link FROM Events WHERE idEvent =:id');
 						$stmt->bindParam(':id', $event_id_page);
