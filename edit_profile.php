@@ -5,13 +5,12 @@
 	$stmt1 = $db->prepare('SELECT * FROM Users WHERE idUser = :idU LIMIT 1');
 	$stmt1->bindParam(':idU', $Usid);
 	$stmt1->execute();
-	$result1 = $stmt1->fetchAll();
-	foreach( $result as $row) {
-                        	$prevpass = $row['password'];
-							$prevsalt = $row['salt'];
-							$prevnome = $row['nome'];
-							$prevemail = $row['email'];
-                        }
+	$result1 = $stmt1->fetch();
+	//echo '-'.trim($_POST['nome']).'-';
+                        	$prevpass = $result1['password'];
+							$prevsalt = $result1['salt'];
+							$prevnome = $result1['nome'];
+							$prevemail = $result1['email'];
 	if("" == trim($_POST['username']))
 		$User = $_SESSION['login_user'];
 	else
@@ -49,9 +48,8 @@
 	
 	$Date = $_POST['date_of_birth'];
 
-	$stmt =$db->prepare('UPDATE Users SET username = :user, password = :pass, salt = :salt, nome = :name, email = :email, birth_date = :data WHERE idUser = :idUser');
-	$stmt->bindParam(':idUser', $_SESSION['id_user']);
-	$stmt->bindParam(':user',$User); //mais seguro com bindparam supostamente
+	$stmt =$db->prepare('UPDATE Users SET password = :pass, salt = :salt, nome = :name, email = :email, birth_date = :data WHERE idUser = :idUser');
+	$stmt->bindParam(':idUser', $_SESSION['id_user']); //mais seguro com bindparam supostamente
 	$stmt->bindParam(':pass',$hash);
 	$stmt->bindParam(':salt',$salt);
 	$stmt->bindParam(':name',$Name);
@@ -62,5 +60,5 @@
 	//readfile("index.php");
 	$redirectUrl = 'profile.php';
 
-    echo '<script type="application/javascript">alert("Sucessfully Updated!'.$prevemail.'"); window.location.href = "'.$redirectUrl.'";</script>';
+    echo '<script type="application/javascript">alert("Sucessfully Updated!"); window.location.href = "'.$redirectUrl.'";</script>';
 ?>
