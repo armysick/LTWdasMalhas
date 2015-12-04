@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS Users (
 	nome CHAR(20),
 	email VARCHAR(30),
 	birth_date DATE,
-	image VARCHAR(50),
-	CONSTRAINT pk_users PRIMARY KEY (idUser),
+	imagesrc VARCHAR(50),
+	CONSTRAINT pk_users PRIMARY KEY (idUser)
 	CONSTRAINT u_user UNIQUE (username));
 
 

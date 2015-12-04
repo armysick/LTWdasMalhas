@@ -16,13 +16,13 @@
                 	<?php 
                 		session_start();
                         $db=new PDO('sqlite:DB.db');
-                        $stmt =$db->prepare('SELECT image FROM Users WHERE username = :user LIMIT 1');
+                        $stmt =$db->prepare('SELECT imagesrc FROM Users WHERE username = :user LIMIT 1');
                         $stmt->bindParam(':user',$_SESSION['login_user']);
 						$stmt->execute();
                         
                         $result = $stmt->fetch();
                         echo '<div class="image">';
-                        echo '<img src="'.$result['image'].'" alt="" width="430" height="250" />'.'</div>';
+                        echo '<img src="'.$result['imagesrc'].'" alt="" width="430" height="250" />'.'</div>';
                         
                     ?>
                 		<form action="Upload.php" method="post" enctype="multipart/form-data"> 
