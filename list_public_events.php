@@ -31,13 +31,14 @@
                             echo '<tr>';
                             echo '<td>' . $row['idEvent'] . '</td>';
                             $id=(int)$row['idUser'];
-                            echo 'esta aqui'.$id;
+                            //echo 'esta aqui'.$id;
                             $db1=new PDO('sqlite:DB.db');
                             $stmt1 =$db1->prepare('SELECT nome FROM Users WHERE idUser LIKE "%'.$id.'%" LIMIT 1');
                             $stmt1->execute();
                             $result1 = $stmt1->fetch();
                             echo '<td>' . $result1['nome'] . '</td>';
-                            echo '<td>' . $row['description'] . '</td>';
+                            $link = 'event_page.php?id='.$row['idEvent'];
+                            echo '<td>' . '<a href="'.$link.'">'.$row['description'] . '</a>'.'</td>';
                             echo '<td>' . $row['event_type'] . '</td>';
                             echo '<td>' . $row['event_date'] . '</td>';
                             echo '<td><img src="'.$row['image_link'].'" alt="Image" height="42" width="42"></td>';

@@ -132,7 +132,7 @@
 													<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
 												</fieldset>
 												<fieldset>
-													<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Cancel</a></button>
+													<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Cancel</a></button>
 												</fieldset>   
 											</form>
 											</content>
@@ -153,7 +153,7 @@
 				<ul>
 					<?php
 						$user_id = $_SESSION['id_user'];
-						$stmt =$db->prepare('SELECT * FROM Events WHERE idUser=:user');
+						$stmt =$db->prepare('SELECT * FROM Events WHERE idUser=:user LIMIT 3');
 						$stmt->bindParam(':user', $user_id);
                         $stmt->execute();
                         $result = $stmt->fetchAll();
@@ -166,16 +166,25 @@
         </article>        
     </aside>
     
-    <aside class="middle-sidebar">
+     <aside class="middle-sidebar">
     	<article>
         	<h2>Recent Comments</h2>
 				<ul>
-					<li><a href="#">Free CSS Templates</a> on <a href="#">Aliquam libero</a></li>
-					<li><a href="#">Free CSS Templates</a> on <a href="#">Consectetuer adipiscing elit</a></li>
-					<li><a href="#">Free CSS Templates</a> on <a href="#">Metus aliquam pellentesque</a></li>
-					<li><a href="#">Free CSS Templates</a> on <a href="#">Suspendisse iaculis mauris</a></li>
-					<li><a href="#">Free CSS Templates</a> on <a href="#">Urnanet non molestie semper</a></li>
-					<li><a href="#">Free CSS Templates</a> on <a href="#">Proin gravida orci porttitor</a></li>
+					<?php
+						$user_id = $_SESSION['id_user'];
+						$stmt =$db->prepare('SELECT * FROM Comments WHERE idUser=:user LIMIT 3' );
+						$stmt->bindParam(':user', $user_id);
+						$stmt->execute();
+                        $result = $stmt->fetch();
+                        foreach( $result as $row) {
+                        	$link = 'event_page.php?id='.$row['idEvent'];
+                        	$stmt1=$db->prepare('SELECT description FROM Events WHERE idEvent=:events LIMIT 1' );
+                        	$stmt1->bindParam(':events', $row['idEvent']);
+                       		$stmt1->execute();
+                        	$result1 = $stmt1->fetch();
+                        	echo '<li>' . 'In '.'<a href="'.$link.'">'.$result1['description'] . '</a>'.'</li>';
+                        }
+                        ?>
 				</ul>
         </article>
         
