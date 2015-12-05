@@ -63,7 +63,7 @@
 							<input type="submit" value = "Register in This Event">
 							</form></a></li>
 							<!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
-							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+							<li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people -->
 							<li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
 						</ul>
 						</ul>
@@ -75,7 +75,7 @@
                             <input type="submit" value = "Invite people to this event">
                             </form></a></li>
                             <!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
-                            <li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+                            <li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people -->
                             <li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
                         </ul>
                         </ul>

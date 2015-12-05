@@ -144,7 +144,7 @@
 											</div>
 									</div>
 								</div>
-							<li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+							<li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people-->
 						</ul>
 						</ul>
 						
