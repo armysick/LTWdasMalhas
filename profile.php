@@ -76,7 +76,7 @@
 											<div class="popupBoxContent">
 												<h2>Create New Event</h2>
 												<content>
-												<form action="create_event.php" class="contact" method="post">
+												<form action="create_event.php" class="contact" method="post" enctype="multipart/form-data">
 													<!--alteração pra enviar pra BDAD-->
 													<fieldset>
 														<input type="text" name="description" placeholder="Event Description…" id="form_contact" tabindex="1" required >
@@ -85,7 +85,7 @@
 														<input placeholder="Event Type…" type="text" name="e_type" id="form_contact" tabindex="2" required>
 													</fieldset>
 													<fieldset>
-														<input name ="image_link" placeholder="Choose Image Link…" type="text" id="form_contact" tabindex="3">
+														<input name ="image_link" placeholder="Choose Image Link…" type="file" id="image_link" tabindex="3">
 													</fieldset>
 													<fieldset>
 														<input name="e_date" placeholder="Event's Date" type="date" id="form_contact" tabindex="4">
