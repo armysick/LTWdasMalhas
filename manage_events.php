@@ -49,20 +49,25 @@
                                 echo '<td>' . 'private' . '</td>';
                             }
                             echo'<td>';
-                            echo'<li class="signin" id="signin">';
-                            echo'<form method="get" action="delete_event.php">';
+                            $a=$row['idEvent'];
+                            echo '<a href="delete_event.php?event_id=' . $a . '">Delete Event</a>';
+                            echo '<a href="edit_event.php?event_id=' . $a . '">Edit Event</a>';
+
+                            //echo'<li class="signin" id="signin">';
+                           /* echo'<form method="get" action="delete_event.php">';
                             echo'<input type="hidden" name="id" value="'.$row['idEvent'].'">';
                             echo'<input type="submit" value = "Delete Event">';
                             echo'</form>';
                             //echo'<form method="get" action="'.$link1.'">';
                             //echo'<input type="hidden" name="event_id" value="'.$row['idEvent'].'"';
                             //echo'<input type="submit" value = "Delete Event">';
-                            echo'<li class="signin" id="signin">';
+                            //echo'<li class="signin" id="signin">';
                             echo'<form method="get" action="edit_event.php">';
                             echo'<input type="hidden" name="id" value="'.$row['idEvent'].'">';
-                            echo'<input type="submit" value = "Edit Event">';
+                            echo'<input type="submit" value = "Edit Event">';*/
                             echo'</td>';
                             echo'</tr>';
+
                         }    
                     ?>
                 </table> 

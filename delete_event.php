@@ -7,7 +7,7 @@
         header('Location: index.php');
     }
 
-    $event_id_page = $_GET["id"];
+    $event_id_page = $_GET["event_id"];
     
     echo'<script language="javascript">';
 	echo 'confirm("Are you sure you want to delete this event?")';
