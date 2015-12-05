@@ -37,7 +37,10 @@
                 <li><a id="contact" href="index.php#contactSection">Contact Us</a></li>
                 <li><a id="events" href="list_public_events.php">Events</a></li>
                 <li class="signin"><a href="Logout.php">Logout</a></li>
-                <li class="signin"><a href="profile.php">Profile</a></li>
+                <?php
+                    session_start();
+                    echo '<li class="signin"><a href="profile.php">'.$_SESSION['login_user'].'</a></li>';
+                ?>
                 
             </ul>
         </nav>
