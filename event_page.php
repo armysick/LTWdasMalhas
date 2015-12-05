@@ -49,7 +49,14 @@
                             	echo '</tr>';
                             }
 						?>
-						
+						<?php 
+                        $stmt3 =$db->prepare('SELECT public FROM Events WHERE idEvent=:id');
+                        $stmt3->bindParam(':id', $event_id_page);
+                        $stmt3->execute();
+                        $result3= $stmt3->fetch();
+                        if($result3['public']==1){
+
+                        ?>
 						<ul class="menu">
 							<li class="signin" id="signin"><!--<a href="register_event.php">Register in this event--><form method="get" action="register_event.php">
 							<input type="hidden" name="id" value="<?php echo $_GET['id'] ?> ">
@@ -60,7 +67,21 @@
 							<li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
 						</ul>
 						</ul>
-						
+						<?php }
+                        else { ?>
+                        <ul class="menu">
+                            <li class="invite" id="invite"><!--<a href="register_event.php">Register in this event--><form method="get" action="Invite_event.php">
+                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?> ">
+                            <input type="submit" value = "Invite people to this event">
+                            </form></a></li>
+                            <!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
+                            <li class="signin"><a href="#">Manage your events</a></li><!--edit, delete, invite people, comment -->
+                            <li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
+                        </ul>
+                        </ul>
+
+
+                        <?php } ?>
                             
                         </article>
                       
@@ -96,45 +117,24 @@
                                 $body = "$name, \n You added the comment:\n $comment";
                                 
                                 //mail(($email, $subject, $body, $from));
+                                
+                                $stmt3 =$db->prepare('INSERT INTO comments(idUser,idEvent,commentary) VALUES(:id_users,:events_id_page,:comments)');
+                                $stmt3->bindParam(':id_users', $id_users);
+                                $stmt3->bindParam(':events_id_page', $event_id_page);
+                                $stmt3->bindParam(':comments', $comments);
+                                $stmt3->execute();
                                 if($_POST['submit']){
-                                    $stmt3 =$db->prepare('INSERT INTO comments(idUser,idEvent,commentary) VALUES(:id_users,:events_id_page,:comments)');
-                                    $stmt3->bindParam(':id_users', $id_users);
-                                    $stmt3->bindParam(':events_id_page', $event_id_page);
-                                    $stmt3->bindParam(':comments', $comments);
-                                    $stmt3->execute();
-                                    echo'<script language="javascript">';
-                                    echo 'alert("Comment added to event")';
-                                    echo '</script>';
-                                    $redirectUrl = '#';
-                                    echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';}
+                                echo'<script language="javascript">';
+                                echo 'alert("Comment added to event")';
+                                echo '</script>';
+                                $redirectUrl = '#';
+                                echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';}
+                          
                             ?>
                             
-                    
-                    <article class="topcontent" id="homeSection">
-                        <h2 id="last comments">Comments</h2>
-					   <?php 
-                       echo '<ul>';     
-                        $stmt4 =$db->prepare('SELECT * FROM comments WHERE idEvent= :events_id_current');
-                        $stmt4->bindParam(':events_id_current', $event_id_page);
-                        $stmt4->execute();
-                        $result3 = $stmt4->fetchAll();
-                        foreach ($result3 as $row){
-                            $stmt5 =$db->prepare('SELECT username FROM Users WHERE idUser=:user_comment LIMIT 1');
-                            $stmt5->bindParam(':user_comment', $row['idUser']);
-                            $stmt5->execute();
-                            $result4 = $stmt5->fetch();
-                            echo'<h3>'.$result4['username'].' said:'.'</h3>';
-                            echo'<li>';
-                            echo '<q>';
-                            echo $row['commentary'];
-                            echo '</q>'.'</li>';
-                        }
-                        echo'</ul>';
-                   ?>	
-
-                    
-                </article>
-               </content>
+                  
+						
+                </content>
         </div>
     </div>
     <aside class="top-sidebar">
