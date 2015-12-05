@@ -109,15 +109,15 @@
                                 session_start();
                                 $id_users = $_SESSION['id_user']; 
                                 $name = $_POST['name'];
-                               $email = $_POST['email'];
+                                $to = $email = $_POST['email'];
                                 $comments = $_POST['comment'];
                                 $from = 'From: Manage My Event';
                                 
                                 $subject = 'Comment succesfully added to event';
                                 $body = "$name, \n You added the comment:\n $comment";
-                                
-                                //mail(($email, $subject, $body, $from));
-                                
+                                if($_POST['submit']){
+                                    mail($to, $subject, $body, $from);
+                                }
                                 $stmt3 =$db->prepare('INSERT INTO comments(idUser,idEvent,commentary) VALUES(:id_users,:events_id_page,:comments)');
                                 $stmt3->bindParam(':id_users', $id_users);
                                 $stmt3->bindParam(':events_id_page', $event_id_page);
@@ -135,6 +135,31 @@
                   
 						
                 </content>
+                <article class="topcontent" id="homeSection">
+                        <h2 id="last comments">Comments</h2>
+                       <?php 
+                       echo '<ul>';     
+                        $stmt4 =$db->prepare('SELECT * FROM comments WHERE idEvent= :events_id_current');
+                        $stmt4->bindParam(':events_id_current', $event_id_page);
+                        $stmt4->execute();
+                        $result3 = $stmt4->fetchAll();
+                        foreach ($result3 as $row){
+                            $stmt5 =$db->prepare('SELECT username FROM Users WHERE idUser=:user_comment LIMIT 1');
+                            $stmt5->bindParam(':user_comment', $row['idUser']);
+                            $stmt5->execute();
+                            $result4 = $stmt5->fetch();
+                            echo'<h3>'.$result4['username'].' said:'.'</h3>';
+                            echo'<li>';
+                            echo '<q>';
+                            echo $row['commentary'];
+                            echo '</q>'.'</li>';
+                        }
+                        echo'</ul>';
+                   ?>   
+
+                    
+                </article>
+               </content>
         </div>
     </div>
     <aside class="top-sidebar">
@@ -180,25 +205,6 @@
         </article>
         
     </aside>
-    
-    
-    <aside class="bottom-sidebar">
-    	<article>
-        	<h2>Search</h2>
-            <form method="get" action="">
-				<fieldset>
-					<legend>Search for Events</legend> <!--search only public events-->
-					<input id="s" type="text" name="s" value="" />
-					<input id="x" type="submit" value="Search" />
-				</fieldset>
-			</form>
-        </article>
-        
-    </aside>
-
-
-
-
 
 <?php
 	include_once("templates/footer.php");
