@@ -6,9 +6,14 @@ $x=$xmlDoc->getElementsByTagName('link');
 
 //get the q parameter from URL
 $q=$_GET["q"];
-
+$actual_link = "$_SERVER[REQUEST_URI]";
+$cleanup = explode("?q=", $actual_link);
+$cleaned = $cleanup[0];
+$nofolder = explode("/AJAXSearch", $cleaned);
+$nofolderino = $nofolder[0];
 //lookup all links from the xml file if length of q>0
 if (strlen($q)>0) {
+	
   $hint="";
   for($i=0; $i<($x->length); $i++) {
     $y=$x->item($i)->getElementsByTagName('title');
@@ -17,12 +22,12 @@ if (strlen($q)>0) {
       //find a link matching the search text
       if (stristr($y->item(0)->childNodes->item(0)->nodeValue,$q)) {
         if ($hint=="") {
-          $hint="<a href='" . 
+          $hint="<a href='" . $nofolderino.
           $z->item(0)->childNodes->item(0)->nodeValue . 
           "' target='_blank'>" . 
           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
         } else {
-          $hint=$hint . "<br /><a href='" . 
+          $hint=$hint . "<br /><a href='" . $nofolderino.
           $z->item(0)->childNodes->item(0)->nodeValue . 
           "' target='_blank'>" . 
           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
@@ -37,6 +42,7 @@ if (strlen($q)>0) {
 if ($hint=="") {
   $response="no suggestion";
 } else {
+  
   $response=$hint;
 }
 
