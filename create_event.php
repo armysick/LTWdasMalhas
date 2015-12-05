@@ -42,18 +42,15 @@
 	$stmt2->bindParam(':event_date',$E_date);
 	$stmt2->bindParam(':public',$Public);	
 	if($stmt->execute()){
+		if($Public){
 		$stmt2->execute();
 		$idEve = $stmt2->fetch();
 		
 		$file = 'links.xml';
-		if (file_exists($file)){
-			echo 'O FICHEIRO EXISTE!';
-		}
+		
 		$xml = simplexml_load_file($file);
 		$xmlFormat = $xml->asXML();
-echo '<u><b>This is the xml code from test2.xml:</b></u>
-     <br /><br />
-     <pre>' . htmlentities($xmlFormat, ENT_COMPAT | ENT_HTML401, "ISO-8859-1") . '</pre><br /><br />';
+
 		//$pages = $xml->pages;
 		
 		$link_new = $xml->addChild('link');
@@ -63,14 +60,8 @@ echo '<u><b>This is the xml code from test2.xml:</b></u>
 		$link_new->addChild('url', $str);
 		$xmlFormat = $xml->asXML();
 		$xml->asXML($file);
-		echo '<u><b>This is the xml code from test2.xml with new elements added:</b></u>
-     <br /><br />
-     <pre>' . htmlentities($xmlFormat, ENT_COMPAT | ENT_HTML401, "ISO-8859-1") . '</pre>';
-
+		}
 		echo '<script type="application/javascript">alert("New Event Sucessfully Created!"); window.location.href = "'.$redirectUrl.'";</script>';
-		/*$dom = dom_import_simplexml($xml)->ownerDocument;
-		$dom->formatOutput = true;
-		echo $dom->saveXML();*/
 	}
 	else
 		echo '<script type="application/javascript">alert("Event Creation Error. Please check input values"); window.location.href = "'.$redirectUrl.'";</script>';
