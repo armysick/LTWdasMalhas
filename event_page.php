@@ -6,6 +6,7 @@
     } else{
         include_once("templates/header.php");
     }
+    $allowed=0;
 ?>
 <div class="mainContent">
     	<div class="content">
@@ -50,11 +51,11 @@
                             }
 						?>
 						<?php 
-                        $stmt3 =$db->prepare('SELECT public FROM Events WHERE idEvent=:id');
-                        $stmt3->bindParam(':id', $event_id_page);
-                        $stmt3->execute();
-                        $result3= $stmt3->fetch();
-                        if($result3['public']==1){
+                            $stmt3 =$db->prepare('SELECT public FROM Events WHERE idEvent=:id');
+                            $stmt3->bindParam(':id', $event_id_page);
+                            $stmt3->execute();
+                            $result3= $stmt3->fetch();
+                            if($result3['public']==1){
 
                         ?>
 						<ul class="menu">
@@ -108,27 +109,56 @@
                             <?php
                                 session_start();
                                 $id_users = $_SESSION['id_user']; 
-                                $name = $_POST['name'];
-                                $to = $email = $_POST['email'];
-                                $comments = $_POST['comment'];
-                                $from = 'From: Manage My Event';
-                                
-                                $subject = 'Comment succesfully added to event';
-                                $body = "$name, \n You added the comment:\n $comment";
                                 if($_POST['submit']){
+                                    $stmt33 =$db->prepare('SELECT idUser FROM Events WHERE idEvent= :id_event_this');
+                                    $stmt33->bindParam(':id_event_this', $event_id_page);
+                                    $stmt33->execute();
+                                    $result33 = $stmt33->fetch();
+                                    if($result33 != $id_users){ //não é owner do evento
+                                        $stmt34 =$db->prepare('SELECT * FROM Registers WHERE idEvent= :id_event_this');
+                                        $stmt34->bindParam(':id_event_this', $event_id_page);
+                                        $stmt34->execute();
+                                        $result34 = $stmt34->fetchAll();        
+                                        foreach($result34 as $row){
+                                            if($row['idUser'] == $id_users){
+                                                $allowed=1;
+                                                break;
+                                            }
+                                        }
+                                        echo'<script language="javascript">';
+                                        echo 'alert("You must be registered in this event to comment")';
+                                        echo '</script>';
+                                        $redirectUrl = '#';
+                                        echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
+                                    } else{
+                                        $allowed = 1;
+                                    }
+                                }
+                                
+                                
+                                if(($_POST['submit']) && ($allowed==1)){
+                                    $name = $_POST['name'];
+                                    $to = $email = $_POST['email'];
+                                    $comments = $_POST['comment'];
+                                    $from = 'From: Manage My Event';
+                                
+                                    $subject = 'Comment succesfully added to event';
+                                    $body = "$name, \n You added the comment:\n $comment";
                                     mail($to, $subject, $body, $from);
                                 }
-                                $stmt3 =$db->prepare('INSERT INTO comments(idUser,idEvent,commentary) VALUES(:id_users,:events_id_page,:comments)');
-                                $stmt3->bindParam(':id_users', $id_users);
-                                $stmt3->bindParam(':events_id_page', $event_id_page);
-                                $stmt3->bindParam(':comments', $comments);
-                                $stmt3->execute();
-                                if($_POST['submit']){
-                                echo'<script language="javascript">';
-                                echo 'alert("Comment added to event")';
-                                echo '</script>';
-                                $redirectUrl = '#';
-                                echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';}
+                                
+                                if(($_POST['submit'])&&($allowed==1)){
+                                    $stmt3 =$db->prepare('INSERT INTO comments(idUser,idEvent,commentary) VALUES(:id_users,:events_id_page,:comments)');
+                                    $stmt3->bindParam(':id_users', $id_users);
+                                    $stmt3->bindParam(':events_id_page', $event_id_page);
+                                    $stmt3->bindParam(':comments', $comments);
+                                    $stmt3->execute();
+                                    echo'<script language="javascript">';
+                                    echo 'alert("Comment added to event")';
+                                    echo '</script>';
+                                    $redirectUrl = '#';
+                                    echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
+                                }
                           
                             ?>
                             
