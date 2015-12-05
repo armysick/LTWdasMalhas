@@ -50,17 +50,16 @@
                             }
                             echo'<td>';
                             echo'<li class="signin" id="signin">';
-                            $link1 = 'delete_event.php';
                             echo'<form method="get" action="delete_event.php">';
                             echo'<input type="hidden" name="id" value="'.$row['idEvent'].'">';
                             echo'<input type="submit" value = "Delete Event">';
                             echo'</form>';
-                            echo'<form method="get" action="'.$link1.'">';
-                            echo'<input type="hidden" name="event_id" value="'.$row['idEvent'].'"';
-                            echo'<input type="submit" value = "Delete Event">';
+                            //echo'<form method="get" action="'.$link1.'">';
+                            //echo'<input type="hidden" name="event_id" value="'.$row['idEvent'].'"';
+                            //echo'<input type="submit" value = "Delete Event">';
                             echo'<li class="signin" id="signin">';
-                            $link2 = 'edit_event.php?id='.$row['idEvent'];
-                            echo'<form method="get" action="'.$link2.'">';
+                            echo'<form method="get" action="edit_event.php">';
+                            echo'<input type="hidden" name="id" value="'.$row['idEvent'].'">';
                             echo'<input type="submit" value = "Edit Event">';
                             echo'</td>';
                             echo'</tr>';
@@ -72,7 +71,7 @@
             </article>
         </div>
     </div>
-    
+
 <?php 
  	include_once("templates/footer.php");
 ?>

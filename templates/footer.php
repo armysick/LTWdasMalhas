@@ -1,7 +1,7 @@
 <aside class="bottom-sidebar">
     	<article>
         	<h2>Search</h2>
-            <form method="get" action="">
+            <form method="get" action="search.php">
 				<fieldset>
 					<legend>Search for Events</legend> <!--search only public events-->
 					<input id="s" type="text" name="s" value="" />
