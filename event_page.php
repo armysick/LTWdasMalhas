@@ -143,7 +143,7 @@
                                     $from = 'From: Manage My Event';
                                 
                                     $subject = 'Comment succesfully added to event';
-                                    $body = "$name, \n You added the comment:\n $comment";
+                                    $body = "$name, \n You added the comment:\n $comments";
                                     mail($to, $subject, $body, $from);
                                 }
                                 
