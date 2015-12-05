@@ -199,6 +199,6 @@
     
     
 <?php
-	include_once("templates/footer.php");
+	include("templates/footer.php");
 ?>
 

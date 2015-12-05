@@ -45,7 +45,7 @@
 		$stmt2->execute();
 		$idEve = $stmt2->fetch();
 		
-		$file = 'AJAXSearch/links.xml';
+		$file = 'links.xml';
 		if (file_exists($file)){
 			echo 'O FICHEIRO EXISTE!';
 		}
