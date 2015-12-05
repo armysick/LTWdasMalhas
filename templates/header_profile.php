@@ -36,8 +36,9 @@
                 <li><a id="about" href="index.php#aboutSection">About</a></li>
                 <li><a id="contact" href="index.php#contactSection">Contact Us</a></li>
                 <li><a id="events" href="list_public_events.php">Events</a></li>
-                <li class="signin"><a href="profile.php">Profile</a></li>
                 <li class="signin"><a href="Logout.php">Logout</a></li>
+                <li class="signin"><a href="profile.php">Profile</a></li>
+                
             </ul>
         </nav>
     </header>

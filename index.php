@@ -114,14 +114,6 @@ In this website you can easily:</p>
         </article>
         
     </aside>
-    
-    <aside class="bottom-sidebar">
-    	<article>
-        	<h2>Search</h2>
-            <p>Search your events, change them, customize them</p>
-        </article>
-        
-    </aside>
 <?php
     include_once("templates/footer.php");
 ?>

@@ -328,6 +328,16 @@ td{
     vertical-align: center;
 	text-align: center;
 }
+footer a:link, footer a:visited{
+	color: #FFF;
+
+}
+
+footer a:hover, footer a:active{
+	background-color: #74AFAD;
+	color: #FFF;
+}
+
 @media only screen and (min-width: 150px) and (max-width: 720px){
 	.body{
 		width: 90%; /*to be responsive*/
