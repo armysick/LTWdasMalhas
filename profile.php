@@ -147,8 +147,13 @@
 											</div>
 									</div>
 								</div>
-							<li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people-->
 							<?php
+								if($_SESSION['admin']){
+									echo'<li class="signin"><a href="manage_events_admin.php">Manage all events</a></li>';
+								}else{
+									echo'<li class="signin"><a href="manage_events.php">Manage your events</a></li>';
+								}
+							
 								if($_SESSION['admin']){
 									echo'<li class="signin"><a href="manage_users.php">View Users</a></li>'; //view current users, delete people
 								}

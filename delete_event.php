@@ -12,6 +12,11 @@
     $stmt =$db->prepare('DELETE FROM Events WHERE idEvent= :id_event');
     $stmt->bindParam(':id_event',$event_id_page);
     $stmt->execute();
-    $redirectUrl = 'manage_events.php';
+    if($_SESSION['admin']){
+        $redirectUrl = 'manage_events_admin.php';
+    }else{
+        $redirectUrl = 'manage_events.php';
+    }
+    //$redirectUrl = 'manage_events.php';
 	echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
 ?>
