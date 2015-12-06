@@ -18,7 +18,7 @@
                     <!--table containing all the public events-->
                     <table>
                         <tr>
-                            <th class="left">Event Id</th>
+                            <th class="left">Event Nº</th>
                             <th class="left">Owner</th>
                             <th class="center">Description</th>
                             <th class="center">Type</th>
@@ -31,9 +31,11 @@
                         $stmt =$db->prepare('SELECT * FROM Events WHERE public=1');
                         $stmt->execute();
                         $result = $stmt->fetchAll();
+                        $num=1;
                         foreach( $result as $row) {
+                            
                             echo '<tr>';
-                            echo '<td>' . $row['idEvent'] . '</td>';
+                            echo '<td>' . $num . '</td>';
                             $id=(int)$row['idUser'];
                             //echo 'esta aqui'.$id;
                             $db1=new PDO('sqlite:DB.db');
@@ -47,6 +49,7 @@
                             echo '<td>' . $row['event_date'] . '</td>';
                             echo '<td><img src="'.$row['image_link'].'" alt="Image" height="42" width="42"></td>';
                             echo '</tr>';
+                            $num=$num+1;
                         }
                     ?>
                     </table>                	
