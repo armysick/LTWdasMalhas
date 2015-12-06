@@ -61,7 +61,6 @@ $stmt1 = $db->prepare("SELECT idUser FROM Users WHERE email = :email");
                     //mail(($to, $subject, $body, $from));
 					
                     if (isset($_POST['submit'])) {
-						echo 'chega';
                         if (mail ($to, $subject, $body, $from)) {
 							
                             echo '<script language="javascript">';
