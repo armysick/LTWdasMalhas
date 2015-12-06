@@ -36,9 +36,10 @@
                         $stmt->bindParam(':user',$user);
                         $stmt->execute();
                         $result = $stmt->fetchAll();
+                        $num=1;
                         foreach( $result as $row) {
                             echo '<tr>';
-                            echo '<td>' . $row['idEvent'] . '</td>';
+                            echo '<td>' . $num . '</td>';
                             $link = 'event_page.php?id='.$row['idEvent'];
                             echo '<td>' . '<a href="'.$link.'">'.$row['description'] . '</a>'.'</td>';
                             echo '<td>' . $row['event_type'] . '</td>';
@@ -49,7 +50,7 @@
                             } else{
                                 echo '<td>' . 'private' . '</td>';
                             }
-                            
+                            $num=$num+1;
                             echo '<td>' . $row['Place'] . '</td>';
                             $a=$row['idEvent'];
                             echo'<td>';
