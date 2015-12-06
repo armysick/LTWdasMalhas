@@ -49,9 +49,10 @@
                             } else{
                                 echo '<td>' . 'private' . '</td>';
                             }
-                            echo'<td>';
-                            echo '<td>' . $row['place'] . '</td>';
+                            
+                            echo '<td>' . $row['Place'] . '</td>';
                             $a=$row['idEvent'];
+                            echo'<td>';
                             echo"<a href='javascript:void' onclick='if(confirm(\"Are you sure you want to delete?\")) window.location=\"delete_event.php?event_id=".$a."\";'><center>Delete</center></a>";
                             echo '<br>';
                             echo '<a href="edit_event.php?event_id=' . $a . '">Edit Event</a>';
