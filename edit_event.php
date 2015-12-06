@@ -1,7 +1,12 @@
 <?php
 	include_once("database/connection.php");
 	session_start();
-	echo $_SESSION['eve_id'];
+	if("" == trim($_POST['eid'])){
+		$redirectUrl = 'manage_events.php';
+		echo '<script type="application/javascript">alert("Please Insert your Event ID!"); window.location.href = "'.$redirectUrl.'";</script>';
+		exit(0);
+	}
+		
 	$Usid = $_SESSION['id_user'];
 	$stmt1 = $db->prepare('SELECT * FROM Events WHERE idEvent = :idE LIMIT 1');
 	$stmt1->bindParam(':idE', $_POST['eid']);
@@ -48,5 +53,5 @@
 	//readfile("index.php");
 	$redirectUrl = 'manage_events.php';
 	
-    //echo '<script type="application/javascript">alert("Sucessfully Updated!"); window.location.href = "'.$redirectUrl.'";</script>';
+    echo '<script type="application/javascript">alert("Sucessfully Updated!"); window.location.href = "'.$redirectUrl.'";</script>';
 ?>

@@ -59,13 +59,19 @@
 							//unset($idEE);
 							$idEE = $row['idEvent'];
 							?>
-							<li class="edit"><?php echo $idEE; ?><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition'); ">Edit your Event </a></li><!--script to edit personal information-->
+							<script>
+							 function clickEvent(){
+								 toggle_visibility('popupBoxTwoPosition');
+								 <?php echo $idEE; $_SESSION['eve_id'] = $idEE; ?>
+							 }
+							 </script>
+							<li class="edit"><a href="javascript:void(0)" onclick="clickEvent(); ">Edit your Event </a></li><!--script to edit personal information-->
 								<div id="popupBoxTwoPosition">
 									<div class="popupBoxWrapper">
 										<div class="popupBoxContent">
 											<h2>Edit Your Event</h2>
 											<content>
-											<form action="" name= "form1" id="form1" class="contact" method="post" onSubmit='submitForm();'>
+											<form id ="form0" action="edit_event.php" class="contact" method="post">
 												<!--alteração pra enviar pra BDAD-->
 												<fieldset>
 													<input type="text" name="description" placeholder="New Description" id="form_contact" tabindex="1">
@@ -80,7 +86,7 @@
 													<input name="place" placeholder="Choose a different place" type="text" id="form_contact" tabindex="4">
 												</fieldset>
 												<fieldset>
-													<input name="eid" value ="<?php echo $idEE; ?>" type="text" id="form_contact" tabindex="5" >
+													<input name="eid" placeholder="Please insert your event ID" type="text" id="form_contact" tabindex="5" >
 												</fieldset>
 												<fieldset>
 													<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
