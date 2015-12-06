@@ -108,6 +108,9 @@ $(document).ready(function () {
                                 <fieldset>
                                     <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
                                 </fieldset>
+                                 <fieldset>
+                                    <button name="ForgotPass" type="button" id="contact-submit"  onclick="toggle_visibility('popupForgot');toggle_visibility('popupBoxTwoPosition');" data-submit="...Sending">Forgot Password ?</button>
+                                </fieldset>
                                 <fieldset>
                                     <button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Cancel</a></button>
                                 </fieldset>   
@@ -116,6 +119,27 @@ $(document).ready(function () {
 						</div>
 					</div>
 				</div>
+
+                <div id="popupForgot">
+                    <div class="popupBoxWrapper">
+                        <div class="popupBoxContent">
+                            <h2>Forgot Password:</h2>
+                            <content>
+                                <form action="ForgotPassword.php" class="contact" method="post">
+                                    <fieldset>
+                                    <input placeholder="Email" type="email" id="form_contact" name="email" tabindex="1">
+                                    </fieldset>
+                                    <fieldset>
+                                    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                                </fieldset>
+                                <fieldset>
+                                    <button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupForgot');">Cancel</a></button>
+                                </fieldset>   
+                                </form>
+                            </content>
+
+                    </div>
+                </div>
             </ul>
         </nav>
     </header>
