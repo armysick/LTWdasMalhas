@@ -1,4 +1,4 @@
-Elementos do grupo:
+Elementos do grupo 10:
 João Mendonça 201304605
 Gustavo Pinto 201302828
 Paulo Silva   200805922
