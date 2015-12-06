@@ -7,10 +7,10 @@ $x=$xmlDoc->getElementsByTagName('link');
 //get the q parameter from URL
 $q=$_GET["q"];
 $actual_link = "$_SERVER[REQUEST_URI]";
-$cleanup = explode("?q=", $actual_link);
-$cleaned = $cleanup[0];
-$nofolder = explode("/AJAXSearch", $cleaned);
-$nofolderino = $nofolder[0];
+$cleanup = explode("livesearch.php", $actual_link);
+$nofolderino = $cleanup[0];
+//$nofolder = explode("/AJAXSearch", $cleaned);
+//$nofolderino = $nofolder[0];
 //lookup all links from the xml file if length of q>0
 if (strlen($q)>0) {
 	
