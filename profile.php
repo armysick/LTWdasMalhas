@@ -65,8 +65,8 @@
 							<!-- Create new event -->
 							
 							<!-- CSS will hide this checkbox until the media query is activated-->
-								<label for="show-menu" class="show-menu">Menu</label>
-								<input type="checkbox" id="show-menu" name="button" />
+								<!--<label for="show-menu" class="show-menu">Menu</label>
+								<input type="checkbox" id="show-menu" name="button" />-->
 								
 								<ul class="menu">
 									<li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Create New Event</a></li>

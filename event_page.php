@@ -78,10 +78,41 @@
 						<?php }
                         else { ?>
                         <ul class="menu">
-                            <li class="invite" id="invite"><!--<a href="register_event.php">Register in this event--><form method="get" action="Invite_event.php">
-                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?> ">
-                            <input type="submit" value = "Invite people to this event">
-                            </form></a></li>
+                            <?php
+                                $a=$event_id_page;
+                                /*echo'<li>';
+                                echo '<a href="invite_for_event.php?event_id=' . $a . '">Invite People for this Event</a>';
+                                echo'</li>';*/
+                            ?>
+
+                                    <li class="signin"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Invite People for this Event</a></li>
+                                               
+                                    <div id="popupBoxOnePosition">
+                                        <div class="popupBoxWrapper">
+                                            <div class="popupBoxContent">
+                                                <h2>Invite People</h2>
+                                                <content>
+                                                <form action="invite_for_event.php" class="contact" method="post" enctype="multipart/form-data">
+                                                    <!--alteração pra enviar pra BDAD-->
+                                                    <fieldset>
+                                                        <input type="text" name="name" placeholder="Name" id="form_contact" tabindex="1" required >
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <?php
+                                                            echo'<input type="hidden" name="event_id" id="form_contact" value="'.$a.'" >';
+                                                        ?>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Invite</button>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Cancel</a></button>
+                                                    </fieldset>   
+                                                </form>
+                                                </content>
+                                                </div>
+                                        </div>
+                                    </div> 
                             <!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
                             <li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people -->
                             <li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
