@@ -76,14 +76,14 @@ $stmt1 = $db->prepare("SELECT idUser FROM Users WHERE email = :email");
 
 
 	 $redirectUrl = 'index.php';
-     //echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
+     echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
 
 
 	}
 	else{
 
 	$redirectUrl = 'index.php';
-     //echo '<script type="application/javascript">alert("this email does not exist, you cant fool me!");window.location.href = "'.$redirectUrl.'";</script>';
+     echo '<script type="application/javascript">alert("this email does not exist, you cant fool me!");window.location.href = "'.$redirectUrl.'";</script>';
 
 
 	}
