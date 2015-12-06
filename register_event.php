@@ -1,14 +1,15 @@
 <?php 
 	include_once("database/connection.php");
 	session_start();
-	$event_id = trim($_GET['id']);
+	$event_id = $_GET['event_id'];
+	//echo $event_id;
 	$redirectUrl = 'event_page.php?id='.$event_id.'#signin';
 	$stmt = $db->prepare("SELECT idUser FROM Events WHERE idEvent = :eID");
 	$stmt->bindParam(':eID', $event_id);
 	$stmt->execute();
 	$result = $stmt->fetch();
-	
-	if($result['idUser'] = $_SESSION['id_user']){
+	//echo $result['idUser'];
+	if($result['idUser'] == $_SESSION['id_user']){
 		echo '<script type="application/javascript">alert("You are this event\'s owner!"); window.location.href = "'.$redirectUrl.'";</script>';
 		exit();
 	}

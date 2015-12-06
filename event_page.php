@@ -59,11 +59,18 @@
 
                         ?>
 						<ul class="menu">
-							<li class="signin" id="signin"><!--<a href="register_event.php">Register in this event--><form method="get" action="register_event.php">
-							<input type="hidden" name="id" value="<?php echo $_GET['id'] ?> ">
-							<input type="submit" value = "Register in This Event">
-							</form></a></li>
-							<!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
+                            <?php
+							    $a=$event_id_page;
+                                echo'<li>';
+                                echo '<a href="register_event.php?event_id=' . $a . '">Register in This Event</a>';
+                                echo'</li>';
+                            ?>    
+                            <!--<li class="signin" id="signin"><a href="register_event.php">Register in this event-->
+                            <!--<form method="get" action="register_event.php">
+							<input type="hidden" name="id" value="-->
+                            <!--<?php?> echo $_GET['id'] 
+							//<input type="submit" value = "Register in This Event"></form></a></li>
+							<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
 							<li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people -->
 							<li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
 						</ul>
