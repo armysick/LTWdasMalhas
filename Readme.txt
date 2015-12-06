@@ -8,5 +8,3 @@ Admin credentials
 username: Admin
 password: 2112mage
 
-
-a pagina foi testada através de https://paginas.fe.up.pt/~up201304605/Project/index.php
