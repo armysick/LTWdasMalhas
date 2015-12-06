@@ -8,10 +8,6 @@
     }
 
     $event_id_page = $_GET["event_id"];
-    
-    echo'<script language="javascript">';
-	echo 'confirm("Are you sure you want to delete this event?")';
-	echo '</script>';
 	
     $stmt =$db->prepare('DELETE FROM Events WHERE idEvent= :id_event');
     $stmt->bindParam(':id_event',$event_id_page);

@@ -44,7 +44,7 @@
 								echo '<tr>';
                             	echo '<td>'.'Description: '.$row['description'].'</td>';
                             	echo'<br>';
-                            	echo '<td>'.'Cateogory: '.$row['event_type'].'</td>';
+                            	echo '<td>'.'Category: '.$row['event_type'].'</td>';
                             	echo'<br>';
                             	echo '<td>'.'Date: '.$row['event_date'].'</td>';
                             	echo '</tr>';
@@ -123,8 +123,13 @@
                         <?php } ?>
                             
                         </article>
-                        <article>
-                        <h4> Users that have registered: </h4>
+                        <article class="topcontent" id="homeSection">
+                            <header>
+                                <h2>Users that have registered:</h2>
+                            </header>
+              
+                        <content>
+                       
                         <?php
                         $stmt6 = $db->prepare('SELECT idUser FROM Registers WHERE idEvent = :id_ev');
                         $stmt6->bindParam(':id_ev',$event_id_page);
@@ -132,19 +137,16 @@
                         $result6 = $stmt6->fetchAll();
                         echo '<ul>';
                         foreach($result6 as $row){
-                        $stmt7 = $db->prepare('SELECT username FROM Users WHERE idUser = :id_us');
-                        $stmt7->bindParam(':id_us',$row['idUser']);
-                        $stmt7->execute();
-                        $result7 =$stmt7->fetch();
+                            $stmt7 = $db->prepare('SELECT username FROM Users WHERE idUser = :id_us');
+                            $stmt7->bindParam(':id_us',$row['idUser']);
+                            $stmt7->execute();
+                            $result7 =$stmt7->fetch();
                         
-                        echo '<li>'.$result7['username'].'</li>';
-                        
-                        
+                            echo '<li>'.$result7['username'].'</li>';
                         }
                         echo '</ul>';
-
                         ?>
-
+                        </content>
                         </article>
                         <article class="" id="contactSection">
                             <header>
