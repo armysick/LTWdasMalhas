@@ -74,7 +74,40 @@
 							//<input type="submit" value = "Register in This Event"></form></a></li>
 							<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
 							<li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people -->
-							<li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
+							<li class="edit"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition'); ">Edit your Event </a></li><!--script to edit personal information-->
+								<div id="popupBoxTwoPosition">
+									<div class="popupBoxWrapper">
+										<div class="popupBoxContent">
+											<h2>Edit Your Event</h2>
+											<content>
+											<form id ="form0" action="edit_event.php" class="contact" method="post">
+												<!--alteração pra enviar pra BDAD-->
+												<fieldset>
+													<input type="text" name="description" placeholder="New Description" id="form_contact" tabindex="1">
+												</fieldset>
+												<fieldset>
+													<input placeholder="New event type" type="text" name="type" id="form_contact" tabindex="2">
+												</fieldset>
+												<fieldset>
+													<input name ="event_date" placeholder="New Event Date" type="date" id="form_contact" tabindex="3">
+												</fieldset>
+												<fieldset>
+													<input name="place" placeholder="Choose a different place" type="text" id="form_contact" tabindex="4">
+												</fieldset>
+												<fieldset>
+													<input name="eid" value = "<?php echo $_GET['id'];?>" type="hidden" id="form_contact" tabindex="5" >
+												</fieldset>
+												<fieldset>
+													<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+												</fieldset>
+												<fieldset>
+													<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Cancel</a></button>
+												</fieldset>   
+											</form>
+											</content>
+											</div>
+									</div>
+								</div>
 						</ul>
 						</ul>
 						<?php }
@@ -117,7 +150,40 @@
                                     </div> 
                             <!--<li class="signin"><a href="comment_event.php">Comment event</a></li>-->
                             <li class="signin"><a href="manage_events.php">Manage your events</a></li><!--edit, delete, invite people -->
-                            <li class="signin"><a href="AJAXSearch/search_event.php">Search Events</a></li><!--Event Search Page -->
+                            <li class="edit"><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition'); ">Edit your Event </a></li><!--script to edit personal information-->
+								<div id="popupBoxTwoPosition">
+									<div class="popupBoxWrapper">
+										<div class="popupBoxContent">
+											<h2>Edit Your Event</h2>
+											<content>
+											<form id ="form0" action="edit_event.php" class="contact" method="post">
+												<!--alteração pra enviar pra BDAD-->
+												<fieldset>
+													<input type="text" name="description" placeholder="New Description" id="form_contact" tabindex="1">
+												</fieldset>
+												<fieldset>
+													<input placeholder="New event type" type="text" name="type" id="form_contact" tabindex="2">
+												</fieldset>
+												<fieldset>
+													<input name ="event_date" placeholder="New Event Date" type="date" id="form_contact" tabindex="3">
+												</fieldset>
+												<fieldset>
+													<input name="place" placeholder="Choose a different place" type="text" id="form_contact" tabindex="4">
+												</fieldset>
+												<fieldset>
+													<input name="eid" value = "<?php echo $_GET['id'];?>" type="hidden" id="form_contact" tabindex="5" >
+												</fieldset>
+												<fieldset>
+													<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+												</fieldset>
+												<fieldset>
+													<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Cancel</a></button>
+												</fieldset>   
+											</form>
+											</content>
+											</div>
+									</div>
+								</div>
                         </ul>
                         </ul>
 

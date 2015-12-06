@@ -60,20 +60,20 @@
 							//unset($idEE);
 							$idEE = $row['idEvent'];
 							?>
+							<!--
 							<script>
 							 function clickEvent(){
 								 toggle_visibility('popupBoxTwoPosition');
 								 <?php echo $idEE; $_SESSION['eve_id'] = $idEE; ?>
 							 }
 							 </script>
-							<li class="edit"><a href="javascript:void(0)" onclick="clickEvent(); ">Edit your Event </a></li><!--script to edit personal information-->
+							<li class="edit"><a href="javascript:void(0)" onclick="clickEvent(); ">Edit your Event </a></li>
 								<div id="popupBoxTwoPosition">
 									<div class="popupBoxWrapper">
 										<div class="popupBoxContent">
 											<h2>Edit Your Event</h2>
 											<content>
 											<form id ="form0" action="edit_event.php" class="contact" method="post">
-												<!--alteração pra enviar pra BDAD-->
 												<fieldset>
 													<input type="text" name="description" placeholder="New Description" id="form_contact" tabindex="1">
 												</fieldset>
@@ -99,7 +99,7 @@
 											</content>
 											</div>
 									</div>
-								</div>
+								</div>-->
 								<?php 
 
                             //echo'<li class="signin" id="signin">';
