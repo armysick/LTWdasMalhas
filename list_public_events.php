@@ -24,6 +24,7 @@
                             <th class="center">Type</th>
                             <th class="center">Date</th>
                             <th class="center">Image</th>
+                            <th class="center">Place</th>
                         </tr> 
 
                     <?php 
@@ -48,6 +49,7 @@
                             echo '<td>' . $row['event_type'] . '</td>';
                             echo '<td>' . $row['event_date'] . '</td>';
                             echo '<td><img src="'.$row['image_link'].'" alt="Image" height="42" width="42"></td>';
+                            echo '<td>' . $row['Place'] . '</td>';
                             echo '</tr>';
                             $num=$num+1;
                         }

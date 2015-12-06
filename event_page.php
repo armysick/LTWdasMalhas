@@ -47,6 +47,7 @@
                             	echo '<td>'.'Category: '.$row['event_type'].'</td>';
                             	echo'<br>';
                             	echo '<td>'.'Date: '.$row['event_date'].'</td>';
+                                echo '<td>'.'Date: '.$row['place'].'</td>';
                             	echo '</tr>';
                             }
 						?>

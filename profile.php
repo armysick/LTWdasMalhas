@@ -89,7 +89,10 @@
 													</fieldset>
 													<fieldset>
 														<input name="e_date" placeholder="Event's Date" type="date" id="form_contact" tabindex="4">
-													</fieldset>													
+													</fieldset>	
+													<fieldset>
+														<input placeholder="Place…" type="text" name="place" id="form_contact" tabindex="2" required>
+													</fieldset>												
 													<fieldset>
 														<input name="public" placeholder="Public? (1) Private?(0)" type="number" id="form_contact" tabindex="5">	
 													</fieldset>

@@ -57,7 +57,7 @@ if ($uploadOk == 0) {
         echo '<script type="application/javascript">alert("There was an error uploading your file try again");window.location.href = "'.$redirectUrl.'";</script>';
     }
 }
-
+	$place = $_POST['place'];
 	$E_date = $_POST['e_date'];
 	$Public = $_POST['public'];
 	if($Public == 1)
@@ -67,24 +67,26 @@ if ($uploadOk == 0) {
 
 	//echo $User_id.$Description.$E_type.$Image_link.$E_date.$Public;
 
-	$stmt =$db->prepare('INSERT INTO Events(idUser,description,event_type,image_link,event_date,public) VALUES(:userID,:description,:event_type,:image_link,:event_date,:public)');
+	$stmt =$db->prepare('INSERT INTO Events(idUser,description,event_type,image_link,event_date,public,place) VALUES(:userID,:description,:event_type,:image_link,:event_date,:public,:place)');
 	$stmt->bindParam(':userID',$User_id); //mais seguro com bindparam supostamente
 	$stmt->bindParam(':description',$Description);
 	$stmt->bindParam(':event_type',$E_type);
 	$stmt->bindParam(':image_link',$target_file);
 	$stmt->bindParam(':event_date',$E_date);
 	$stmt->bindParam(':public',$Public);
+	$stmt->bindParam(':place',$place);
 	$redirectUrl = 'profile.php';
 	
-	$stmt2 = $db->prepare('SELECT idEvent FROM Events WHERE idUser = :userID AND description = :description AND event_type = :event_type AND image_link = :image_link AND event_date = :event_date AND public = :public');
+	$stmt2 = $db->prepare('SELECT idEvent FROM Events WHERE idUser = :userID AND description = :description AND event_type = :event_type AND image_link = :image_link AND event_date = :event_date AND public = :public AND place = :place');
 	$stmt2->bindParam(':userID',$User_id); //mais seguro com bindparam supostamente
 	$stmt2->bindParam(':description',$Description);
 	$stmt2->bindParam(':event_type',$E_type);
 	$stmt2->bindParam(':image_link',$target_file);
 	$stmt2->bindParam(':event_date',$E_date);
-	$stmt2->bindParam(':public',$Public);	
+	$stmt2->bindParam(':public',$Public);
+	$stmt2->bindParam(':place',$place);	
 	if($stmt->execute()){
-		if($Public){
+		if($public){
 		$stmt2->execute();
 		$idEve = $stmt2->fetch();
 		
@@ -97,7 +99,7 @@ if ($uploadOk == 0) {
 		
 		$link_new = $xml->addChild('link');
 		
-		$link_new->addChild('title', $Description);
+		$link_new->addChild('url', $str);
 		$str = '/event_page.php?id='.$idEve['idEvent'];
 		$link_new->addChild('url', $str);
 		$xmlFormat = $xml->asXML();

@@ -23,15 +23,9 @@
 		echo '<script type="application/javascript">alert("You are already registered in this event!"); window.location.href = "'.$redirectUrl.'";</script>';
 		exit();
 	}
-	if(isset($_SESSION['id_user'])){
 	$stmt2 = $db->prepare("INSERT INTO Registers(idUser, idEvent) VALUES (:uID, :eID)");
 	$stmt2->bindParam(':eID', $event_id);
 	$stmt2->bindParam(':uID', $_SESSION['id_user']);
 	$stmt2->execute();
 	echo '<script type="application/javascript">alert("You have successfully registered in this event!"); window.location.href = "'.$redirectUrl.'";</script>';
-	}
-	else{
-		echo '<script type="application/javascript">alert("You are not logged in to register in this event!"); window.location.href = "'.$redirectUrl.'";</script>';
-	}
-	
 ?>

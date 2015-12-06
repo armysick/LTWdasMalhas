@@ -24,6 +24,7 @@
                             <th class="center">Date</th>
                             <th class="center">Image</th>
                             <th class="center">Public</th>
+                            <th class="center">Place</th>
                             <th class="center">Option</th>
                         </tr> 
 
@@ -49,6 +50,7 @@
                                 echo '<td>' . 'private' . '</td>';
                             }
                             echo'<td>';
+                            echo '<td>' . $row['place'] . '</td>';
                             $a=$row['idEvent'];
                             echo"<a href='javascript:void' onclick='if(confirm(\"Are you sure you want to delete?\")) window.location=\"delete_event.php?event_id=".$a."\";'><center>Delete</center></a>";
                             echo '<br>';
