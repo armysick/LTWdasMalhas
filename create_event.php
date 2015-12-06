@@ -86,7 +86,7 @@ if ($uploadOk == 0) {
 	$stmt2->bindParam(':public',$Public);
 	$stmt2->bindParam(':place',$place);	
 	if($stmt->execute()){
-		if($public){
+		if($Public){
 		$stmt2->execute();
 		$idEve = $stmt2->fetch();
 		
@@ -99,7 +99,7 @@ if ($uploadOk == 0) {
 		
 		$link_new = $xml->addChild('link');
 		
-		$link_new->addChild('url', $str);
+		$link_new->addChild('title', $Description);
 		$str = '/event_page.php?id='.$idEve['idEvent'];
 		$link_new->addChild('url', $str);
 		$xmlFormat = $xml->asXML();
