@@ -55,7 +55,45 @@
                             echo'<td>';
                             echo"<a href='javascript:void' onclick='if(confirm(\"Are you sure you want to delete?\")) window.location=\"delete_event.php?event_id=".$a."\";'><center>Delete</center></a>";
                             echo '<br>';
-                            echo '<a href="edit_event.php?event_id=' . $a . '">Edit Event</a>';
+                            //echo '<a href="edit_event.php?event_id=' . $a . '">Edit Event</a>';
+							//unset($idEE);
+							$idEE = $row['idEvent'];
+							?>
+							<li class="edit"><?php echo $idEE; ?><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition'); ">Edit your Event </a></li><!--script to edit personal information-->
+								<div id="popupBoxTwoPosition">
+									<div class="popupBoxWrapper">
+										<div class="popupBoxContent">
+											<h2>Edit Your Event</h2>
+											<content>
+											<form action="" name= "form1" id="form1" class="contact" method="post" onSubmit='submitForm();'>
+												<!--alteração pra enviar pra BDAD-->
+												<fieldset>
+													<input type="text" name="description" placeholder="New Description" id="form_contact" tabindex="1">
+												</fieldset>
+												<fieldset>
+													<input placeholder="New event type" type="text" name="type" id="form_contact" tabindex="2">
+												</fieldset>
+												<fieldset>
+													<input name ="event_date" placeholder="New Event Date" type="date" id="form_contact" tabindex="3">
+												</fieldset>
+												<fieldset>
+													<input name="place" placeholder="Choose a different place" type="text" id="form_contact" tabindex="4">
+												</fieldset>
+												<fieldset>
+													<input name="eid" value ="<?php echo $idEE; ?>" type="text" id="form_contact" tabindex="5" >
+												</fieldset>
+												<fieldset>
+													<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+												</fieldset>
+												<fieldset>
+													<button name="cancel" type="button" id="contact-submit" ><a id="cancel-button" href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">Cancel</a></button>
+												</fieldset>   
+											</form>
+											</content>
+											</div>
+									</div>
+								</div>
+								<?php 
 
                             //echo'<li class="signin" id="signin">';
                            /* echo'<form method="get" action="delete_event.php">';

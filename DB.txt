@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS Events (
 	event_type CHAR(30),
 	image_link VARCHAR(50),
 	event_date DATE,
-	public BOOLEAN,
+	public BOOLEAN, Place VARCHAR(30),
 	CONSTRAINT pk_events PRIMARY KEY (idEvent),
 	CONSTRAINT fk_users FOREIGN KEY (idUser) REFERENCES Users(idUser));
 	
