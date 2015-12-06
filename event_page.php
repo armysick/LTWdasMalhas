@@ -123,7 +123,29 @@
                         <?php } ?>
                             
                         </article>
-                      
+                        <article>
+                        <h4> Users that have registered: </h4>
+                        <?php
+                        $stmt6 = $db->prepare('SELECT idUser FROM Registers WHERE idEvent = :id_ev');
+                        $stmt6->bindParam(':id_ev',$event_id_page);
+                        $stmt6->execute();
+                        $result6 = $stmt6->fetchAll();
+                        echo '<ul>';
+                        foreach($result6 as $row){
+                        $stmt7 = $db->prepare('SELECT username FROM Users WHERE idUser = :id_us');
+                        $stmt7->bindParam(':id_us',$row['idUser']);
+                        $stmt7->execute();
+                        $result7 =$stmt7->fetch();
+                        
+                        echo '<li>'.$result7['username'].'</li>';
+                        
+                        
+                        }
+                        echo '</ul>';
+
+                        ?>
+
+                        </article>
                         <article class="" id="contactSection">
                             <header>
                                 <h2>Leave a comment...</h2>
