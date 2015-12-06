@@ -176,7 +176,7 @@
                                     $stmt33->bindParam(':id_event_this', $event_id_page);
                                     $stmt33->execute();
                                     $result33 = $stmt33->fetch();
-                                    if($result33 != $id_users){ //não é owner do evento
+                                    if($result33['idUser'] != $id_users){ //não é owner do evento
                                         $stmt34 =$db->prepare('SELECT * FROM Registers WHERE idEvent= :id_event_this');
                                         $stmt34->bindParam(':id_event_this', $event_id_page);
                                         $stmt34->execute();
