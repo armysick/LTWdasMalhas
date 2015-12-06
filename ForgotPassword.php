@@ -52,15 +52,18 @@ $stmt1 = $db->prepare("SELECT idUser FROM Users WHERE email = :email");
 	$stmt->bindParam(':salt', $salt);
 	$stmt->execute();
 	
-					$message = "A sua nova palavra passe é esta:  ".$pass." tente iniciar sessão com a nova palavra passe."
+					$message = "A sua nova palavra passe é esta:  ".$pass." tente iniciar sessão com a nova palavra passe.";
                     $from = 'From: Manage My Event';
                     $to = $email;
                     $subject = 'Password Reset';
     
                     $body = "De: Manage my events \n Mensagem:\n $message";
                     //mail(($to, $subject, $body, $from));
-                    if ($_POST['submit']) {
+					
+                    if (isset($_POST['submit'])) {
+						echo 'chega';
                         if (mail ($to, $subject, $body, $from)) {
+							
                             echo '<script language="javascript">';
 							echo 'alert("message successfully sent")';
 							echo '</script>';
@@ -74,14 +77,14 @@ $stmt1 = $db->prepare("SELECT idUser FROM Users WHERE email = :email");
 
 
 	 $redirectUrl = 'index.php';
-     echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
+     //echo '<script type="application/javascript">window.location.href = "'.$redirectUrl.'";</script>';
 
 
 	}
 	else{
 
 	$redirectUrl = 'index.php';
-     echo '<script type="application/javascript">alert("this email does not exist, you cant fool me!");window.location.href = "'.$redirectUrl.'";</script>';
+     //echo '<script type="application/javascript">alert("this email does not exist, you cant fool me!");window.location.href = "'.$redirectUrl.'";</script>';
 
 
 	}
