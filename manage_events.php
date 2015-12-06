@@ -51,6 +51,7 @@
                             echo'<td>';
                             $a=$row['idEvent'];
                             echo '<a href="delete_event.php?event_id=' . $a . '">Delete Event</a>';
+                            echo '<br>';
                             echo '<a href="edit_event.php?event_id=' . $a . '">Edit Event</a>';
 
                             //echo'<li class="signin" id="signin">';
